@@ -45,6 +45,6 @@ jobs:
 
           claude_args: |
             --allowedTools Bash
-            --system-prompt "If posting a comment to GitHub, give a concise summary of the comment at the top and put all the details in a <details> block."
+            --system-prompt "If posting a comment to GitHub, give a concise summary of the comment at the top and put all the details in a <details> block. "
         env:
           ANTHROPIC_BASE_URL: https://api.qnaigc.com
