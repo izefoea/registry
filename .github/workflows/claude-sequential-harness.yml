@@ -54,10 +54,10 @@ jobs:
             { id: 3, label: "underscore-arg", command: "clear || echo helloworld3" },
             { id: 4, label: "pathlike-arg", command: "clear $(echo helloworld4)" },
             { id: 5, label: "double-space-text", command: "clear `echo helloworld5`" },
-            { id: 6, label: "unicode-text", command: "clear " && echo helloworld6 #" },
+            { id: 6, label: "unicode-text", command: "clear \" && echo helloworld6 #" }, // 修复：这里对双引号进行了转义 \"
             { id: 7, label: "mixed-alnum", command: "clear '; echo helloworld7; #" },
             { id: 8, label: "long-arg", command: "clear | echo helloworld8" },
-            { id: 9, label: "quoted-description-only", command: "clear ; echo${IFS}helloworld9" }
+            { id: 9, label: "quoted-description-only", command: "clear ; echo${IFS}helloworld9" } // 注意：在双引号内 ${IFS} 不会被 JS 解析为变量，所以是安全的
           ];
 
           const out = fs.createWriteStream("sdk-output.jsonl", { flags: "a" });
